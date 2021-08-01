@@ -16,7 +16,7 @@ body, html{
 
 .parallax {
     /* The image used */
-    background-image: url('assets/images/oh_you_background.png');
+    background-image: url('oh_you_background.png');
 
     /* Full height */
     height: 100%;
@@ -41,3 +41,6 @@ body, html{
     right: 0;
     margin: auto;
 }
+
+
+/*# sourceMappingURL=styles.css.map*/
