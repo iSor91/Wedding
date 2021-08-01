@@ -9,23 +9,24 @@ body, html{
     height: 100%;
 }
 
-.middle {
-    text-align: center;
-    max-height: 100%;
-    max-width: 60%;
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 65%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
 .parallax {
     /* The image used */
     background-image: url('assets/images/oh_you_background.png');
+
+    /* Full height */
+    height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 65%;
+    position: relative;
+}
+
+.parallax2 {
+    /* The image used */
+    background-image: url('assets/images/oh_you_background2.png');
 
     /* Full height */
     height: 100%;
@@ -43,10 +44,15 @@ body, html{
     max-width: 60%;
     width: auto;
     height: auto;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+    text-align: center;
+}
+
+.middle {
+    top: 65%;
 }
