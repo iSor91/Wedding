@@ -24,27 +24,10 @@ body, html{
     position: relative;
 }
 
-.parallax2 {
-    /* The image used */
-    background-image: url('assets/images/oh_you_background2.png');
-
-    /* Full height */
-    height: 100%;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 65%;
-    position: relative;
-}
-
 .content {
-    max-height: 100%;
-    max-width: 60%;
-    width: auto;
-    height: auto;
-    position: fixed;
+    width: 90vw;
+    height: 90vh;
+    position: sticky;
     top: 0;
     bottom: 0;
     left: 0;
@@ -53,6 +36,19 @@ body, html{
     text-align: center;
 }
 
+img {
+    max-width: 60vw;
+    max-height: 60vh;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 25vh;
+    margin-left: 5vw;
+}
+
 .middle {
-    top: 65%;
+    padding-left: 5%;
+    top: 50vh;
 }
