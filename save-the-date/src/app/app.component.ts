@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { CdkScrollable, ScrollDispatcher, ScrollingModule } from "@angular/cdk/scrolling";
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit{
 
   constructor(
     private scrollDispatcher: ScrollDispatcher,
-    private zone: NgZone)
+    private zone: NgZone,
+    private deviceService: DeviceDetectorService)
   {
     const backgroundIndex = Math.floor( Math.random() * 4 ) + 1;
     this.backgroundImgUrl = `assets/images/oh_you_${backgroundIndex}.png`;
@@ -26,6 +28,10 @@ export class AppComponent implements OnInit{
         this.zone.run(()=> this.scrollState = scrollState);
       }
     )
+  }
+
+  isDesktop(): boolean {
+    return this.deviceService.isDesktop();
   }
 
   calculateOpacity(index: number): number {

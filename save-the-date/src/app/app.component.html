@@ -1,4 +1,4 @@
-<div *showItDevice="['mobile','tablet']"class="container" cdkScrollable>
+<div *ngIf="!isDesktop()" class="container" cdkScrollable>
   <div class="parallax" [style.backgroundImage]="'url('+ backgroundImgUrl +')'">
     <div class="fixedcontent">
       <img src="assets/images/title_mobile.png" />
@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<div *showItDevice="['desktop']" class="container" cdkScrollable>
+<div *ngIf="isDesktop()" class="container" cdkScrollable>
   <div class="parallax" [style.backgroundImage]="'url('+ backgroundImgUrl +')'">
     <div class="content">
       <img [style.opacity]="calculateOpacity(0)" src="assets/images/title.png" />
