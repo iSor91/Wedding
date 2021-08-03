@@ -9,11 +9,15 @@ import { CdkScrollable, ScrollDispatcher, ScrollingModule } from "@angular/cdk/s
 export class AppComponent implements OnInit{
   
   scrollState = 0;
+  backgroundImgUrl : string;
 
   constructor(
     private scrollDispatcher: ScrollDispatcher,
     private zone: NgZone)
-  {}
+  {
+    const backgroundIndex = Math.floor( Math.random() * 4 ) + 1;
+    this.backgroundImgUrl = `assets/images/oh_you_${backgroundIndex}.png`;
+  }
   
   ngOnInit(): void {
     this.scrollDispatcher.scrolled().subscribe(
