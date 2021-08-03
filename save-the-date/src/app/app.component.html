@@ -1,4 +1,23 @@
-<div class="container" cdkScrollable>
+<div *showItDevice="['mobile','tablet']"class="container" cdkScrollable>
+  <div class="parallax" [style.backgroundImage]="'url('+ backgroundImgUrl +')'">
+    <div class="fixedcontent">
+      <img src="assets/images/title_mobile.png" />
+      <div class="middle">
+        <div title="Add to Calendar" class="addeventatc" data-dropdown-x="right" data-dropdown-y="up">
+          Add to Calendar
+          <span class="start">07/02/2022 04:00 PM</span>
+          <span class="end">07/03/2022 04:00 AM</span>
+          <span class="timezone">Europe/Paris</span>
+          <span class="title">Julo & isör Wedding</span>
+          <span class="description">Osszehazasodunk, gyere el</span>
+          <span class="location">Nádas Tó Park Hotelsuperior, Vasad, Monori út 100, 2211 Magyarország</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *showItDevice="['desktop']" class="container" cdkScrollable>
   <div class="parallax" [style.backgroundImage]="'url('+ backgroundImgUrl +')'">
     <div class="content">
       <img [style.opacity]="calculateOpacity(0)" src="assets/images/title.png" />
