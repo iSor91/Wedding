@@ -34,6 +34,16 @@ body, html{
     text-align: center;
 }
 
+.mobilecontent {
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    position: relative;   
+    text-align: center;
+}
+
 .fixedcontent {
     width: 90vw;
     height: 90vh;
@@ -42,11 +52,20 @@ body, html{
     bottom: 0;
     left: 0;
     right: 0;
-    margin: auto;
-    text-align: center;
 }
 
-img {
+.mobileimg {
+    max-width: 60vw;
+    max-height: 60vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.desktopimg {
     max-width: 60vw;
     max-height: 60vh;
     position: sticky;
@@ -54,7 +73,7 @@ img {
     bottom: 0;
     left: 0;
     right: 0;
-    margin-top: 25vh;
+    margin-top: 30vh;
     margin-left: 5vw;
 }
 
