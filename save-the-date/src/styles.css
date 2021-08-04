@@ -2,6 +2,7 @@ body, html{
     height: 100%;
     background-color: #001f73;
     margin: 0%;
+    cursor: url("assets/images/cursor_cat_normal_space.png"), auto; 
 }
 
 .container {
@@ -73,11 +74,13 @@ body, html{
     bottom: 0;
     left: 0;
     right: 0;
-    margin-top: 30vh;
-    margin-left: 5vw;
+    margin-top: 20vh;
 }
 
 .middle {
-    padding-left: 5%;
     top: 50vh;
+}
+
+.cathover {
+    cursor: , auto; 
 }

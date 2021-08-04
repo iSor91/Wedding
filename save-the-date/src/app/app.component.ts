@@ -11,6 +11,8 @@ export class AppComponent implements OnInit{
   
   scrollState = 0;
   backgroundImgUrl : string;
+  description = "Összeházasodunk ebben az időpontban, mentsd el, hivatalos meghívó később érkezik. :)";
+  not_working_button = "Ha a gomb nem működik a kapitalizmust hibáztasd";
 
   constructor(
     private scrollDispatcher: ScrollDispatcher,

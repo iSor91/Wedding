@@ -13,6 +13,7 @@
         <span class="description"></span>
         <span class="location">Nádas Tó Park Hotelsuperior, Vasad, Monori út 100, 2211 Magyarország</span>
       </div>
+      <p><span style="color: azure;">{{not_working_button}}</span></p>
     </div>
   </div>
 </div>
@@ -42,16 +43,17 @@
     <div class="content">
       <img class="desktopimg" [style.opacity]="calculateOpacity(4)" src="assets/images/date_num.png" />
 
-      <div [style.opacity]="calculateOpacity(4)" class="middle">
-        <div title="Add to Calendar" class="addeventatc" data-dropdown-x="right" data-dropdown-y="up">
-          Add to Calendar
+      <div [style.opacity]="calculateOpacity(4)" class="middle cathover">
+        <div title="Naptárba vele!" class="addeventatc" data-dropdown-x="right" data-dropdown-y="up">
+          Naptárba vele!
           <span class="start">07/02/2022 04:00 PM</span>
           <span class="end">07/03/2022 04:00 AM</span>
           <span class="timezone">Europe/Paris</span>
           <span class="title">Julo & isör Wedding</span>
-          <span class="description">Osszehazasodunk, gyere el</span>
+          <span class="description">{{description}}</span>
           <span class="location">Nádas Tó Park Hotelsuperior, Vasad, Monori út 100, 2211 Magyarország</span>
         </div>
+        <p><span style="color: azure;">{{not_working_button}}</span></p>
       </div>
     </div>
   </div>
