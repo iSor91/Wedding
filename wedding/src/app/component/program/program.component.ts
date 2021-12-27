@@ -25,6 +25,7 @@ export class ProgramComponent implements OnInit {
         this.programs.push(new Program(element[0], element[1], element[2], element[3] == '1'))
       })
     );
+    this.programs.filter(p=>!p.hidden)
   }
 
 }

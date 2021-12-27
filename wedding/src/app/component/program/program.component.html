@@ -1,6 +1,14 @@
-<p>These will be the programs:</p>
-<ul>
-    <div class="asd" *ngFor="let i of programs" >
-        <li *ngIf="!i.hidden">{{i.time}}{{i.name}}</li>
-    </div>
-</ul>
+<h1>Programok</h1>
+<table class="programs" >
+    <tr>
+        <th>Kezdet</th>
+        <th>Program</th>
+        <th>Leiras</th>
+    </tr>
+    <tr *ngFor="let i of programs" >
+        <td>{{i.time}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.description}}</td>
+    </tr>
+</table>
+
