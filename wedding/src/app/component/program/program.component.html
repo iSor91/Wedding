@@ -1,0 +1,6 @@
+<p>These will be the programs:</p>
+<ul>
+    <div class="asd" *ngFor="let i of programs" >
+        <li *ngIf="!i.hidden">{{i.time}}{{i.name}}</li>
+    </div>
+</ul>
