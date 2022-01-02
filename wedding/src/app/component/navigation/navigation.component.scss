@@ -1,0 +1,34 @@
+@import "/src/variables.scss";
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1rem;
+    background: $button-backgrond;
+    border-radius: $radius;
+
+    .btn {
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 0.25rem 1rem;
+        color: black;
+        
+        background: $button-backgrond;
+        border-radius: $radius;
+        cursor: pointer;
+        font-size: 1.5rem;
+        font-family: "Minnie", sans-serif;
+        transition: all .2s;
+        
+        &:hover {
+            transform: translate(-1px,-3px);
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 50%);
+        }
+
+        &:active {
+            transform: translate(0px,0px);
+            box-shadow: none;
+        }
+    }
+}

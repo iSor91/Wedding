@@ -1,7 +1,4 @@
-$container-background: rgba($color: #002849, $alpha: 0.4);
-$container-border: rgba($color: #008cff, $alpha: 1);
-
-$max-screen-width: 100rem;
+@import "variables.scss";
 
 h1 {
     text-align: center;
@@ -20,12 +17,10 @@ html {
 .container {
     display: flex;
     justify-content: center;
-    border: solid $container-border;
-    border-radius: 1rem;
+    border-radius: $radius;
     background: $container-background;
     margin-bottom: 0.75rem;
 }
-
 
 .main {
     margin: 0 auto;
@@ -34,12 +29,14 @@ html {
     max-width: $max-screen-width;
 
     display: grid;
-    grid-template-columns: 1fr;
-    grid-row: 35vh 65vh;
+    grid-template-columns: 1fr 0.2fr;
+    grid-row: 35vh 10vh 55vh;
+    
 
     grid-template-areas: 
-        "header"
-        "content";
+        "header header"
+        "navigation navigation"
+        "content content";
 
     align-items: center;
     
@@ -47,9 +44,13 @@ html {
         grid-area: header;
     }
 
-    app-program {
+    app-program, app-response, app-invite {
         grid-area: content;
     }
 
-}
+    app-navigation {
+        grid-area: navigation;
+        align-self: start;
+    }
 
+}

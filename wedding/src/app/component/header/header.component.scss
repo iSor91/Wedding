@@ -1,10 +1,10 @@
-$heading-background: rgba($color: #001f73, $alpha: 0.9);
+@import "/src/variables.scss";
 
 .header-container {
     display: flex;
     justify-content: center;
     background-color: $heading-background;
-    border-radius: 1rem;
+    border-radius: $radius;
     margin-bottom: 1rem;
 
     .header {
