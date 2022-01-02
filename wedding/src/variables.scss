@@ -1,10 +1,24 @@
-$container-background-opaque: rgba($color: #002849, $alpha: 0.4);
+$container-background-opaque: #002849;
 $container-background: #002849;
-$container-border: rgba($color: #008cff, $alpha: 1);
+$container-border: #008cff;
 
 $max-screen-width: 100rem;
 
-$button-backgrond: $container-border;
-$heading-background: rgba($color: #001f73, $alpha: 0.9);
+$button-backgrond: #008cff;
+$heading-background: #001f73;
 
-$radius: 0.5rem
+$background-radient: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+
+$white-gradient: linear-gradient(#38495a, white);
+
+$radius: 0.5rem;
+
+$font-family: Minnie, sans-serif;
+
+
+@mixin textbackground {
+    background: -webkit-linear-gradient(white, #38495a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
