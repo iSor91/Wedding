@@ -3,60 +3,53 @@ $container-border: rgba($color: #008cff, $alpha: 1);
 
 $max-screen-width: 100rem;
 
+h1 {
+    text-align: center;
+    color: blanchedalmond;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 html {
-
     min-height: 100%;
+    min-width: 100%;
     body {
-        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);  
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    border: solid $container-border;
+    border-radius: 1rem;
+    background: $container-background;
+    margin-bottom: 0.75rem;
+}
 
 
-        h1 {
-            text-align: center;
-            color: blanchedalmond;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-        
-        .main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            
-            .heading{
-                flex-shrink: 1; 
-                max-width: $max-screen-width;
-                width: 90vw;
-                height: 40vh;
-                object-fit: cover;
-                opacity: 90%;
-                border-radius: 0.9rem;
-            }
+.main {
+    margin: 0 auto;
 
-            .programs{
-                color: blanchedalmond;
-                text-align: center;
-                padding: 1rem 2rem 0rem 2rem;
-            }
+    width: 90vw;
+    max-width: $max-screen-width;
 
-            table {
-                background-color: grey;
-                border-radius: 2rem;
-            }
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: 35vh 65vh;
 
-            .container {
-                border: solid $container-border;
-                border-radius: 1rem;
-                background: $container-background;
-                display: flex;
-                justify-content: center;
-                margin-top: 1rem;
-            }
+    grid-template-areas: 
+        "header"
+        "content";
 
-            .navigation {
-                min-width: 90vw;
-                max-width: $max-screen-width;
-            }
-        }
+    align-items: center;
+    
+    app-header {
+        grid-area: header;
+    }
 
+    app-program {
+        grid-area: content;
     }
 
 }
+
