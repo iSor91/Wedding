@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: 'response', component: ResponseComponent},
   {path: 'invite', component: InviteComponent},
   {path: 'program', component: ProgramComponent},
-  {path: '', redirectTo:'program', pathMatch:'full'}
+  {path: '', redirectTo:'invite', pathMatch:'full'}
 ];
 
 @NgModule({

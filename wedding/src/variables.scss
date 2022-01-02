@@ -1,11 +1,10 @@
-$container-background-opaque: #002849;
-$container-background: #002849;
-$container-border: #008cff;
+$silver: #38495a;
+
+$heading-background: #001f73;
+$dark-blue: #002849;
+$light-blue: #008cff;
 
 $max-screen-width: 100rem;
-
-$button-backgrond: #008cff;
-$heading-background: #001f73;
 
 $background-radient: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
 
@@ -14,7 +13,6 @@ $white-gradient: linear-gradient(#38495a, white);
 $radius: 0.5rem;
 
 $font-family: Minnie, sans-serif;
-
 
 @mixin textbackground {
     background: -webkit-linear-gradient(white, #38495a);

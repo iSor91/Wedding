@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './component/header/header.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { FloatingStarsComponent } from './component/floating-stars/floating-stars.component';
+import { NavigationButtonComponent } from './component/navigation/navigation-button/navigation-button.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FloatingStarsComponent } from './component/floating-stars/floating-star
     InviteComponent,
     HeaderComponent,
     NavigationComponent,
-    FloatingStarsComponent
+    FloatingStarsComponent,
+    NavigationButtonComponent
   ],
   imports: [
     BrowserModule,
