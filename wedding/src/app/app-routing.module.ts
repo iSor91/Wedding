@@ -5,10 +5,11 @@ import { ProgramComponent } from './component/program/program.component';
 import { ResponseComponent } from './component/response/response.component';
 
 const routes: Routes = [
-  {path: 'response', component: ResponseComponent},
-  {path: 'invite', component: InviteComponent},
+  {path: 'response/:type', component: ResponseComponent},
+  {path: 'invite/:type', component: InviteComponent},
   {path: 'program', component: ProgramComponent},
-  {path: '', redirectTo:'invite', pathMatch:'full'}
+  {path: '', redirectTo:'program', pathMatch:'full'},
+  {path: '**', redirectTo: 'program'}
 ];
 
 @NgModule({

@@ -1,1 +1,6 @@
-invite
+<div class="container content">
+    <h1>{{invite!!.greeting}}</h1>
+    
+    <p *ngFor="let c of invite!!.content">{{c}}</p>
+    <a *ngIf="validType()" routerLink="/response/{{type}}">Respond</a>
+</div>

@@ -14,7 +14,15 @@ export class GsheetService {
   constructor(private http: HttpClient) { }
 
   getProgram() {
-    console.log('getProgram')
-    return this.http.get<any>(`${this.baseUrl}${this.spreadsheetId}/values/Program!A2:Z1000?key=${this.key}`)
+    return this.readSheet('Program')
   }
+
+  getInvites() {
+    return this.readSheet('Invite');
+  }
+
+  readSheet(sheet: string) {
+    return this.http.get<any>(`${this.baseUrl}${this.spreadsheetId}/values/${sheet}!A2:Z1000?key=${this.key}`)
+  }
+
 }

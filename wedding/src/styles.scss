@@ -15,7 +15,9 @@ h1 {
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     border-radius: $radius;
     margin-bottom: 0.75rem;
 }
