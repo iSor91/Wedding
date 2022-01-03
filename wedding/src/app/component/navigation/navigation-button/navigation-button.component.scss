@@ -4,7 +4,9 @@
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.25rem 1rem;
-    
+
+    position: absolute;
+        
     background: transparent;
     border-radius: $radius;
     cursor: pointer;
@@ -12,22 +14,19 @@
     transition: all .2s;
     font-family: Minnie, sans-serif;
     
-    box-sizing: border-box;
-
     @include textbackground;
 
     &:hover {
         transform: translate(-1px,-3px);
-        box-shadow: 2px 5px 10px rgba(0, 0, 0, 50%);
+        box-shadow: 0px 5px 10px -2px $silver;
     }
 
     &:active {
         transform: translate(0px,0px);
-        box-shadow: none;
+        box-shadow: 0px 5px 10px -2px white;
     }
 
     &-active {
-        border: solid $silver;
-        border-width: 1px;
+        box-shadow: 0px 5px 10px -2px white;
     }
 }
