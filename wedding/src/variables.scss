@@ -12,11 +12,31 @@ $white-gradient: linear-gradient(#38495a, white);
 
 $radius: 0.5rem;
 
-$font-family: Minnie, sans-serif;
-
 @mixin textbackground {
     background: -webkit-linear-gradient(white, #38495a);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+@font-face {
+    font-family: brookesmith;
+    src: url("/assets/fonts/Brooke Smith Script.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: dearlyloved;
+    src: url("/assets/fonts/Dearly loved Slab One by 7NTypes.otf") format("opentype");
+}
+
+@font-face {
+    font-family: elsie;
+    src: url("/assets/fonts/Elsie-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: lobster;
+    src: url("/assets/fonts/Lobster-Regular.ttf") format("truetype");
+}
+
+$font-family: lobster;

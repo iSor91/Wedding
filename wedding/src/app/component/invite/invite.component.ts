@@ -60,8 +60,6 @@ export class InviteComponent implements OnInit {
   }
 
   getContent() {
-    console.log(this.invitees);
-    console.log(this.inviteContents);
 
     if(this.invitees.length == 0) {
       return;

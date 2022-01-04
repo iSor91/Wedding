@@ -11,6 +11,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { FloatingStarsComponent } from './component/floating-stars/floating-stars.component';
 import { NavigationButtonComponent } from './component/navigation/navigation-button/navigation-button.component';
+import { PreviouslyComponent } from './component/previously/previously.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavigationButtonComponent } from './component/navigation/navigation-but
     HeaderComponent,
     NavigationComponent,
     FloatingStarsComponent,
-    NavigationButtonComponent
+    NavigationButtonComponent,
+    PreviouslyComponent
   ],
   imports: [
     BrowserModule,
