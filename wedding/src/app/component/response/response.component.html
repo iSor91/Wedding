@@ -1,6 +1,7 @@
 <div class="container content">
-    <iframe *ngIf="invitee?.type == 'couple'" src="https://docs.google.com/forms/d/e/1FAIpQLSeHWe6ODD0zbvEf3-T_JmYutigdtTvMbHGKXS9S6F_RQAy0yw/viewform?embedded=true" width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    <iframe *ngIf="invitee?.type == 'single'" src="https://docs.google.com/forms/d/e/1FAIpQLSfeS3E2qKuRm6H9XMmUBYKGS9nsDVXmClfY38HwHYZNkHBR1w/viewform?embedded=true" width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <iframe *ngIf="invitee?.type == 'couple' || invitee?.type == 'single'"
+         [src]="formUrl() | safe"
+         width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     <div *ngIf="invitee?.type == 'error'" class="content">
         <h1>Na na!</h1>
         <p>Meghívó nélkül kérünk ne jelezz vissza &lt;3 </p>

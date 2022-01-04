@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Invitee } from 'src/app/model/invitee';
 import { GsheetService } from 'src/app/service/gsheet.service';
@@ -10,12 +11,12 @@ import { GsheetService } from 'src/app/service/gsheet.service';
 })
 export class ResponseComponent implements OnInit {
 
-  private hash: string = "";
-
+  hash: string = "";
+  
   private invitees: Invitee[] = [];
   invitee: Invitee | undefined;
   
-  constructor(private activeRoute: ActivatedRoute, private gsheetService: GsheetService) { 
+  constructor(private sanitizer: DomSanitizer, private activeRoute: ActivatedRoute, private gsheetService: GsheetService) { 
     this.hash = activeRoute.snapshot.paramMap.get("hash")!!;
   }
 
@@ -23,6 +24,14 @@ export class ResponseComponent implements OnInit {
     this.gsheetService.getInvitees().subscribe(data => {
       this.processInvitees(data);
     });
+  }
+
+  formUrl(): string {
+    return this.invitee?.type == 'single' ? 
+    //single response
+    `https://docs.google.com/forms/d/e/1FAIpQLSfeS3E2qKuRm6H9XMmUBYKGS9nsDVXmClfY38HwHYZNkHBR1w/viewform?usp=pp_url&entry.557630679=${this.hash}` :
+    //couple response
+    `https://docs.google.com/forms/d/e/1FAIpQLSeHWe6ODD0zbvEf3-T_JmYutigdtTvMbHGKXS9S6F_RQAy0yw/viewform?embedded=true&entry.1895075738=${this.hash}`;
   }
 
   processInvitees(data: any) {
