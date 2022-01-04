@@ -3,7 +3,7 @@
 .btn {
     text-decoration: none;
     text-transform: uppercase;
-    padding: 0.5rem 0.5rem 0.25rem 0.5rem ;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem ;
 
     position: absolute;
         
@@ -13,8 +13,10 @@
     font-size: 1.5rem;
     transition: all .2s;
     font-family: $font-family;
+    box-shadow: 0px 5px 10px -2px $silver;
+
     
-    @include textbackground;
+    @include textbackground(white, $silver);
 
     &:hover {
         transform: translate(-1px,-3px);

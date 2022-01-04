@@ -2,5 +2,5 @@
     <h1>{{inviteContent?.greeting}} {{invitee?.name}}!</h1>
     
     <p *ngFor="let c of inviteContent?.content">{{c}}</p>
-    <a *ngIf="validType()" routerLink="/response/{{type}}">Respond</a>
+    <a class="btn" *ngIf="validType()" routerLink="/response/{{type}}">Visszajelzek</a>
 </div>

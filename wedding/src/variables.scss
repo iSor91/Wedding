@@ -12,8 +12,8 @@ $white-gradient: linear-gradient(#38495a, white);
 
 $radius: 0.5rem;
 
-@mixin textbackground {
-    background: -webkit-linear-gradient(white, #38495a);
+@mixin textbackground($from, $to) {
+    background: -webkit-linear-gradient($from, $to);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
