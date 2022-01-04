@@ -10,7 +10,10 @@ html {
 
 h1 {
     font-family: $font-family;
-    @include textbackground;
+}
+
+p {
+    font-family: $font-family;
 }
 
 .container {

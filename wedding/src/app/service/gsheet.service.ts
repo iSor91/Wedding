@@ -17,8 +17,12 @@ export class GsheetService {
     return this.readSheet('Program')
   }
 
-  getInvites() {
-    return this.readSheet('Invite');
+  getInviteContents() {
+    return this.readSheet('InviteContent');
+  }
+
+  getInvitees() {
+    return this.readSheet('Invitee')
   }
 
   readSheet(sheet: string) {

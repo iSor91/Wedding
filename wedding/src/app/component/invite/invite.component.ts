@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Invite } from 'src/app/model/invite';
+import { InviteContent } from 'src/app/model/invite-content';
+import { Invitee } from 'src/app/model/invitee';
 import { GsheetService } from 'src/app/service/gsheet.service';
 
 
@@ -13,44 +14,75 @@ export class InviteComponent implements OnInit {
 
   type: string = "";
 
-  //update to behaviorsubject
-  invite: Invite = new Invite();
+  private invitees: Invitee[] = [];
+  private inviteContents: InviteContent[] = [];
 
-  private validInvites: Invite[] = []
+  invitee: Invitee | undefined;
+  inviteContent: InviteContent | undefined;
   
   constructor(private activeRoute: ActivatedRoute, private gsheetService: GsheetService) { 
-    this.type = activeRoute.snapshot.paramMap.get("type")!!;
+    this.type = activeRoute.snapshot.paramMap.get("hash")!!;
   }
 
   ngOnInit(): void {
-    this.validInvites = [];
-    this.gsheetService.getInvites().subscribe(data => {
-      data.values.forEach((element: any) => {
-        var inv = new Invite();
-        inv.type = element[0];
-        inv.valid = element[1];
-        inv.greeting = element[2];
-        for (let i = 3; i < element.length; i++) {
-          inv.content.push(element[i]);
-        }
-        this.validInvites.push(inv);
-        console.log(inv);
-      });
-      this.invite = this.getContent();
-    })
+    this.inviteContents = [];
+    this.gsheetService.getInviteContents().subscribe(data => {
+      this.processInviteTypes(data);
+    });
+    this.gsheetService.getInvitees().subscribe(data => {
+      this.processInvitees(data);
+    });
   }
 
-  getContent(): Invite {
-    
-    var invite = this.validInvites.find(invite => invite.type == this.type);
-    
-    if(invite instanceof Invite && invite?.type !== "") {
-      return invite!!;
+  processInvitees(data: any) {
+    data.values.forEach((element: any) => {
+      var invitee = new Invitee();
+      invitee.hash = element[0];
+      invitee.validity = element[1];
+      invitee.name = element[2];
+      invitee.type = element[3];
+      this.invitees.push(invitee);
+    });
+    this.getContent();
+  }
+
+  private processInviteTypes(data: any) {
+    data.values.forEach((element: any) => {
+      var inv = new InviteContent();
+      inv.type = element[0];
+      inv.greeting = element[1];
+      for (let i = 2; i < element.length; i++) {
+        inv.content.push(element[i]);
+      }
+      this.inviteContents.push(inv);
+    });
+    this.getContent();
+  }
+
+  getContent() {
+    console.log(this.invitees);
+    console.log(this.inviteContents);
+
+    if(this.invitees.length == 0) {
+      return;
     }
-    return this.validInvites.find(invite => invite.type == 'error')!!;
+    var invitee = this.invitees.find(invitee => invitee.hash == this.type);
+    
+    if(invitee instanceof Invitee) {
+      this.invitee = invitee!!;
+    } else {
+      this.invitee = this.invitees.find(invitee => invitee.hash == 'error');
+    }
+
+    if(this.inviteContents.length == 0) {
+      return;
+    }
+
+    this.inviteContent = this.inviteContents.find(invite => invite.type == this.invitee?.type)!!;
+
   }
 
   validType(): boolean {
-    return this.invite!!.valid == '1';
+    return this.invitee?.validity == '1';
   }
 }

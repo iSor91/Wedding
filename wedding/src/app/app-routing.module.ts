@@ -5,8 +5,8 @@ import { ProgramComponent } from './component/program/program.component';
 import { ResponseComponent } from './component/response/response.component';
 
 const routes: Routes = [
-  {path: 'response/:type', component: ResponseComponent},
-  {path: 'invite/:type', component: InviteComponent},
+  {path: 'response/:hash', component: ResponseComponent},
+  {path: 'invite/:hash', component: InviteComponent},
   {path: 'program', component: ProgramComponent},
   {path: '', redirectTo:'program', pathMatch:'full'},
   {path: '**', redirectTo: 'program'}
