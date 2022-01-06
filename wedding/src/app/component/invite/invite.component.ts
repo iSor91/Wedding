@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { InviteContent } from 'src/app/model/invite-content';
 import { Invitee } from 'src/app/model/invitee';
 import { GsheetService } from 'src/app/service/gsheet.service';
@@ -14,9 +15,13 @@ export class InviteComponent implements OnInit {
 
   type: string = "";
 
-  private invitees: Invitee[] = [];
-  private inviteContents: InviteContent[] = [];
-  private responses: string[] = [];
+  private inviteesObs: Observable<Invitee[]> = this.gsheetService.getInvitees();
+  private inviteContentsObs: Observable<InviteContent[]> = this.gsheetService.getInviteContents();
+  private responsesObs: Observable<string[]> = this.gsheetService.getResponses();
+
+  invitees: Invitee[] = [];
+  inviteContents: InviteContent[] = [];
+  responses: string[] = [];
 
   invitee: Invitee | undefined;
   inviteContent: InviteContent | undefined;
@@ -28,16 +33,18 @@ export class InviteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.inviteContents = [];
-    this.gsheetService.getInviteContents().subscribe(data => {
-      this.processInviteContent(data);
+    this.inviteesObs.subscribe(data => {
+      this.invitees = data;
+      this.getContent();
     });
-    this.gsheetService.getInvitees().subscribe(data => {
-      this.processInvitees(data);
+    this.inviteContentsObs.subscribe(data => {
+      this.inviteContents = data;
+      this.getContent();
     });
-    this.gsheetService.getResponses().subscribe(data => {
-      this.processResponses(data);
-    })
+    this.responsesObs.subscribe(data => {
+      this.responses = data
+      this.getContent();
+    });
   }
 
   alreadyResponded(): boolean {
@@ -46,41 +53,6 @@ export class InviteComponent implements OnInit {
       return true;
     }
     return this.responses.indexOf(hash) != -1;
-  }
-
-  processResponses(data: any) {
-    data.values.forEach((element: any) => {
-      for (let i = 0; i < element.length; i++) {
-        this.responses.push(element[i]);
-        
-      }
-    });
-  }
-
-  processInvitees(data: any) {
-    data.values.forEach((element: any) => {
-      var invitee = new Invitee();
-      invitee.hash = element[0];
-      invitee.validity = element[1];
-      invitee.name = element[2];
-      invitee.type = element[3];
-      this.invitees.push(invitee);
-    });
-    this.getContent();
-  }
-
-  private processInviteContent(data: any) {
-    data.values.forEach((element: any) => {
-      var inv = new InviteContent();
-      inv.type = element[0];
-      inv.contentType = element[1];
-      inv.greeting = element[2];
-      for (let i = 3; i < element.length; i++) {
-        inv.content.push(element[i]);
-      }
-      this.inviteContents.push(inv);
-    });
-    this.getContent();
   }
 
   getContent() {

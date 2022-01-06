@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GsheetService } from 'src/app/service/gsheet.service';
 import { tap } from 'rxjs/operators';
 import { Program } from 'src/app/model/program';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-program',
@@ -12,20 +13,15 @@ export class ProgramComponent implements OnInit {
 
   constructor(private db: GsheetService) { }
 
-  programs: Program[] = []
+  programsObs: Observable<Program[]> = this.db.getProgram();
+  programs: Program[] = [];
 
   ngOnInit(): void {
     this.getPrograms();
   }
 
   getPrograms() {
-    this.programs = []
-    this.db.getProgram().subscribe(data => 
-      data.values.forEach((element: any) => {
-        this.programs.push(new Program(element[0], element[1], element[2], element[3] == '1'))
-      })
-    );
-    this.programs.filter(p=>!p.hidden)
+    this.programsObs.subscribe(data => this.programs = data.filter(p=>!p.hidden))
   }
 
 }

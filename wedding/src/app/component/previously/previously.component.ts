@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Previously } from 'src/app/model/previously';
 import { GsheetService } from 'src/app/service/gsheet.service';
 
@@ -11,21 +12,11 @@ export class PreviouslyComponent implements OnInit {
 
   constructor(private gsheetService: GsheetService) { }
 
+  previouslyContentObs: Observable<Previously[]> = this.gsheetService.getPreviously();
   previouslyContent: Previously[] = [];
 
   ngOnInit(): void {
-    var i = 0;
-    this.gsheetService.getPreviously().subscribe(data => {
-      data.values.forEach((element:any) =>{
-        var p = new Previously();
-        p.imgUrl = element[0];
-        for (let i = 1; i < element.length; i++) {
-          p.paragraphs.push(element[i]);
-        }
-        p.index = ++i;
-        this.previouslyContent.push(p);
-      })
-    });
+    this.previouslyContentObs.subscribe(data => this.previouslyContent = data);
   }
 
   imgOrder(p: Previously): string {
