@@ -23,7 +23,6 @@ export class PreviouslyComponent implements OnInit {
           p.paragraphs.push(element[i]);
         }
         p.index = ++i;
-        console.log(p);
         this.previouslyContent.push(p);
       })
     });
