@@ -17,14 +17,15 @@
 
     
     @include textbackground(white, $silver);
+    transform: translate(-50%,0);
 
     &:hover {
-        transform: translate(-1px,-3px);
+        transform: translate(-51%,-3px);
         box-shadow: 0px 5px 10px -2px $silver;
     }
 
     &:active {
-        transform: translate(0px,0px);
+        transform: translate(-50%,0px);
         box-shadow: 0px 5px 10px -2px white;
     }
 
