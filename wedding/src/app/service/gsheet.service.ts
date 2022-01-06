@@ -22,7 +22,11 @@ export class GsheetService {
   }
 
   getInvitees() {
-    return this.readSheet('Invitee')
+    return this.readSheet('Invitee');
+  }
+
+  getPreviously() {
+    return this.readSheet('Previously');
   }
 
   readSheet(sheet: string) {
