@@ -1,8 +1,11 @@
 <div class="container content">
-    <iframe *ngIf="invitee?.type == 'couple' || invitee?.type == 'single'"
-         [src]="formUrl() | safe"
-         width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    <div *ngIf="invitee?.type == 'error'" class="content">
+    <iframe *ngIf="(invitee?.type == 'couple' || invitee?.type == 'single') && !alreadyResponded()"
+    [src]="formUrl() | safe"
+    width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <div *ngIf="alreadyResponded()" class="container">
+        <p *ngFor="let p of respondedContent?.content" class="nomargin">{{p}}</p>
+    </div>
+    <div *ngIf="invitee?.type == 'error'" class="container">
         <h1>Na na!</h1>
         <p>Meghívó nélkül kérünk ne jelezz vissza &lt;3 </p>
     </div>

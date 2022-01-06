@@ -62,21 +62,6 @@ export class GsheetService {
       this.inviteContent.next(inviteContents);
     });
 
-    var respondedHashesJson = this.readSheet('Responded');
-    respondedHashesJson.subscribe(data => {
-      var responses: string[] = [];
-      if(data.values !== undefined) {
-        data.values.forEach((element: any) => {
-          for (let i = 0; i < element.length; i++) {
-            responses.push(element[i]);
-          }
-        });
-        this.respondedHashes.next(responses);
-      }
-      
-      
-    });
-
     var previouslyJson = this.readSheet('Previously');
     var i = 0;
     previouslyJson.subscribe(data => {
@@ -107,6 +92,18 @@ export class GsheetService {
   }
 
   getResponses() {
+    var respondedHashesJson = this.readSheet('Responded');
+    respondedHashesJson.subscribe(data => {
+      var responses: string[] = [];
+      if(data.values !== undefined) {
+        data.values.forEach((element: any) => {
+          for (let i = 0; i < element.length; i++) {
+            responses.push(element[i]);
+          }
+        });
+        this.respondedHashes.next(responses);
+      }
+    });
     return this.respondedHashes.asObservable();
   }
 

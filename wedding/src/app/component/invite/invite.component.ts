@@ -5,7 +5,6 @@ import { InviteContent } from 'src/app/model/invite-content';
 import { Invitee } from 'src/app/model/invitee';
 import { GsheetService } from 'src/app/service/gsheet.service';
 
-
 @Component({
   selector: 'app-invite',
   templateUrl: './invite.component.html',
@@ -13,11 +12,11 @@ import { GsheetService } from 'src/app/service/gsheet.service';
 })
 export class InviteComponent implements OnInit {
 
-  type: string = "";
+  hash: string = "";
 
-  private inviteesObs: Observable<Invitee[]> = this.gsheetService.getInvitees();
-  private inviteContentsObs: Observable<InviteContent[]> = this.gsheetService.getInviteContents();
-  private responsesObs: Observable<string[]> = this.gsheetService.getResponses();
+  inviteesObs: Observable<Invitee[]> = this.gsheetService.getInvitees();
+  inviteContentsObs: Observable<InviteContent[]> = this.gsheetService.getInviteContents();
+  responsesObs: Observable<string[]> = this.gsheetService.getResponses();
 
   invitees: Invitee[] = [];
   inviteContents: InviteContent[] = [];
@@ -29,7 +28,7 @@ export class InviteComponent implements OnInit {
   calendarContent: InviteContent | undefined;
   
   constructor(private activeRoute: ActivatedRoute, private gsheetService: GsheetService) { 
-    this.type = activeRoute.snapshot.paramMap.get("hash")!!;
+    this.hash = activeRoute.snapshot.paramMap.get("hash")!!;
   }
 
   ngOnInit(): void {
@@ -55,12 +54,12 @@ export class InviteComponent implements OnInit {
     return this.responses.indexOf(hash) != -1;
   }
 
-  getContent() {
+  private getContent() {
 
     if(this.invitees.length == 0) {
       return;
     }
-    var invitee = this.invitees.find(invitee => invitee.hash == this.type);
+    var invitee = this.invitees.find(invitee => invitee.hash == this.hash);
     
     if(invitee instanceof Invitee) {
       this.invitee = invitee!!;
@@ -72,12 +71,13 @@ export class InviteComponent implements OnInit {
       return;
     }
 
-    this.inviteContent = this.inviteContents.find(invite => invite.type == this.invitee?.type && invite.contentType == 'invite')!!;
+    this.inviteContent = this.getInviteContentOfType('invite');
+    this.respondedContent = this.getInviteContentOfType('responded');
+    this.calendarContent = this.getInviteContentOfType('calendar');
+  }
 
-    this.respondedContent = this.inviteContents.find(invite => invite.type == this.invitee?.type && invite.contentType == 'responded');
-
-    this.calendarContent = this.inviteContents.find(invite => invite.type == this.invitee?.type && invite.contentType == 'calendar');
-
+  private getInviteContentOfType(type: string): InviteContent | undefined {
+    return this.inviteContents.find(invite => invite.type == this.invitee?.type && invite.contentType == type)!!;
   }
 
   validType(): boolean {

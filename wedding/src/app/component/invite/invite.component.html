@@ -8,7 +8,7 @@
     <div *ngIf="alreadyResponded()" class="container" style="order: 2;">
         <p *ngFor="let p of respondedContent?.content" class="nomargin">{{p}}</p>
     </div>
-    <a *ngIf="!alreadyResponded() && validType()" class="btn" style="order: 3;" routerLink="/response/{{type}}">{{respondedContent?.greeting}}</a> 
+    <a *ngIf="!alreadyResponded() && validType()" class="btn" style="order: 3;" routerLink="/response/{{hash}}">{{respondedContent?.greeting}}</a> 
     
     <div *ngIf="validType()" class="container" style="order: 4;">
         <p *ngFor="let p of calendarContent?.content" class="nomargin">{{p}}</p>
