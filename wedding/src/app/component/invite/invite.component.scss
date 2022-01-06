@@ -1,4 +1,8 @@
-@import "/src/variables.scss";
+@import "src/variables.scss";
+
+.nomargin {
+    margin: 0rem;
+}
 
 .btn {
     text-decoration: none;

@@ -16,9 +16,12 @@ export class InviteComponent implements OnInit {
 
   private invitees: Invitee[] = [];
   private inviteContents: InviteContent[] = [];
+  private responses: string[] = [];
 
   invitee: Invitee | undefined;
   inviteContent: InviteContent | undefined;
+  respondedContent: InviteContent | undefined;
+  calendarContent: InviteContent | undefined;
   
   constructor(private activeRoute: ActivatedRoute, private gsheetService: GsheetService) { 
     this.type = activeRoute.snapshot.paramMap.get("hash")!!;
@@ -27,10 +30,30 @@ export class InviteComponent implements OnInit {
   ngOnInit(): void {
     this.inviteContents = [];
     this.gsheetService.getInviteContents().subscribe(data => {
-      this.processInviteTypes(data);
+      this.processInviteContent(data);
     });
     this.gsheetService.getInvitees().subscribe(data => {
       this.processInvitees(data);
+    });
+    this.gsheetService.getResponses().subscribe(data => {
+      this.processResponses(data);
+    })
+  }
+
+  alreadyResponded(): boolean {
+    var hash = this.invitee?.hash
+    if(hash == undefined) {
+      return true;
+    }
+    return this.responses.indexOf(hash) != -1;
+  }
+
+  processResponses(data: any) {
+    data.values.forEach((element: any) => {
+      for (let i = 0; i < element.length; i++) {
+        this.responses.push(element[i]);
+        
+      }
     });
   }
 
@@ -46,12 +69,13 @@ export class InviteComponent implements OnInit {
     this.getContent();
   }
 
-  private processInviteTypes(data: any) {
+  private processInviteContent(data: any) {
     data.values.forEach((element: any) => {
       var inv = new InviteContent();
       inv.type = element[0];
-      inv.greeting = element[1];
-      for (let i = 2; i < element.length; i++) {
+      inv.contentType = element[1];
+      inv.greeting = element[2];
+      for (let i = 3; i < element.length; i++) {
         inv.content.push(element[i]);
       }
       this.inviteContents.push(inv);
@@ -76,7 +100,11 @@ export class InviteComponent implements OnInit {
       return;
     }
 
-    this.inviteContent = this.inviteContents.find(invite => invite.type == this.invitee?.type)!!;
+    this.inviteContent = this.inviteContents.find(invite => invite.type == this.invitee?.type && invite.contentType == 'invite')!!;
+
+    this.respondedContent = this.inviteContents.find(invite => invite.type == this.invitee?.type && invite.contentType == 'responded');
+
+    this.calendarContent = this.inviteContents.find(invite => invite.type == this.invitee?.type && invite.contentType == 'calendar');
 
   }
 

@@ -1,6 +1,26 @@
 <div class="container content">
     <h1>{{inviteContent?.greeting}} {{invitee?.name}}!</h1>
     
-    <p *ngFor="let c of inviteContent?.content">{{c}}</p>
-    <a class="btn" *ngIf="validType()" routerLink="/response/{{type}}">Visszajelzek</a> 
+    <div class="container" style="order: 1;">
+        <p *ngFor="let c of inviteContent?.content">{{c}}</p>
+    </div>
+
+    <div *ngIf="alreadyResponded()" class="container" style="order: 2;">
+        <p *ngFor="let p of respondedContent?.content" class="nomargin">{{p}}</p>
+    </div>
+    <a *ngIf="!alreadyResponded() && validType()" class="btn" style="order: 3;" routerLink="/response/{{type}}">{{respondedContent?.greeting}}</a> 
+    
+    <div *ngIf="validType()" class="container" style="order: 4;">
+        <p *ngFor="let p of calendarContent?.content" class="nomargin">{{p}}</p>
+        <br/>
+        <div title="Naptárba vele!"  class="addeventatc" data-dropdown-x="right" data-dropdown-y="up">
+            Naptárba vele!
+            <span class="start">07/02/2022 04:00 PM</span>
+            <span class="end">07/03/2022 04:00 AM</span>
+            <span class="timezone">Europe/Paris</span>
+            <span class="title">Julo & isör Wedding</span>
+            <span class="description">{{calendarContent?.greeting}}</span>
+            <span class="location">Nádas Tó Park Hotelsuperior, Vasad, Monori út 100, 2211 Magyarország</span>
+        </div>
+    </div>
 </div>

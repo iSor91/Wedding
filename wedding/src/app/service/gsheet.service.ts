@@ -25,6 +25,10 @@ export class GsheetService {
     return this.readSheet('Invitee');
   }
 
+  getResponses() {
+    return this.readSheet('Responded');
+  }
+
   getPreviously() {
     return this.readSheet('Previously');
   }
