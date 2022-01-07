@@ -8,6 +8,10 @@
 .prev-cont {
     display: flex;
     width: 100%;
+
+    &-v {
+        flex-direction: column;
+    }
 }
 
 .prev-img {

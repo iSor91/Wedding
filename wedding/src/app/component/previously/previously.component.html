@@ -2,7 +2,7 @@
 <div class="container content">
     <h1>Az eddigi részek tartalmából</h1>
     
-    <div class="prev-cont" *ngFor="let prevContent of previouslyContent">
+    <div class="{{orientation()}}" *ngFor="let prevContent of previouslyContent">
         <div class="container prev" [style.order]="imgOrder(prevContent)">
             <img class="prev-img" src="https://drive.google.com/uc?export=view&id={{prevContent.imgUrl}}"/>
         </div>

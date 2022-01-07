@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { Observable } from 'rxjs';
 import { Previously } from 'src/app/model/previously';
 import { GsheetService } from 'src/app/service/gsheet.service';
@@ -10,7 +11,7 @@ import { GsheetService } from 'src/app/service/gsheet.service';
 })
 export class PreviouslyComponent implements OnInit {
 
-  constructor(private gsheetService: GsheetService) { }
+  constructor(private gsheetService: GsheetService, protected ds: DeviceDetectorService) { }
 
   previouslyContentObs: Observable<Previously[]> = this.gsheetService.getPreviously();
   previouslyContent: Previously[] = [];
@@ -25,6 +26,10 @@ export class PreviouslyComponent implements OnInit {
   
   pOrder(p: Previously): string {
     return p.index % 2 == 0 ? '3' : '1';
+  }
+
+  orientation() {
+    return this.ds.isDesktop() ? "prev-cont" : "prev-cont-v";
   }
 
 }
