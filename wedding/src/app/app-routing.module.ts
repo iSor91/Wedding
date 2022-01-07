@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { InviteComponent } from './component/invite/invite.component';
 import { PreviouslyComponent } from './component/previously/previously.component';
 import { ProgramComponent } from './component/program/program.component';
 import { ResponseComponent } from './component/response/response.component';
 
 const routes: Routes = [
+  {path: 'contactus', component: ContactUsComponent},
   {path: 'previously', component: PreviouslyComponent},
   {path: 'response/:hash', component: ResponseComponent},
   {path: 'invitation/:hash', component: InviteComponent},

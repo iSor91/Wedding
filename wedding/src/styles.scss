@@ -42,6 +42,7 @@ p {
     align-items: center;
     border-radius: $radius;
     margin-bottom: 0.75rem;
+    min-height: 100%;
 }
 
 .content {
@@ -56,16 +57,11 @@ p {
     max-width: $max-screen-width;
 
     display: grid;
-    grid-template-columns: 1fr;
-    grid-row: 35vh 10vh 55vh;
-    
-    
+        
     grid-template-areas: 
         "header"
         "navigation"
         "content";
-
-    align-items: center;
     
     app-header {
         grid-area: header;

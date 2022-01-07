@@ -13,6 +13,7 @@ import { FloatingStarsComponent } from './component/floating-stars/floating-star
 import { NavigationButtonComponent } from './component/navigation/navigation-button/navigation-button.component';
 import { PreviouslyComponent } from './component/previously/previously.component';
 import { SafePipe } from './service/safe.pipe';
+import { ContactUsComponent } from './component/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SafePipe } from './service/safe.pipe';
     FloatingStarsComponent,
     NavigationButtonComponent,
     PreviouslyComponent,
-    SafePipe
+    SafePipe,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
