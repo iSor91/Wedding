@@ -10,7 +10,13 @@ export class NavigationComponent implements OnInit {
 
   active: string = "";
 
-  constructor(private router: Router) { 
+  buttons = [
+    ["Program","program"],
+    ["Bemutatkozás", "previously"],
+    ["Kapcsolat","contactus"]
+  ]
+
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {

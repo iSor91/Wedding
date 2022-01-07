@@ -1,5 +1,5 @@
 <div class="navbar">
-    <app-navigation-button name="Bemutatkozás" routerLink="previously"></app-navigation-button>
-    <app-navigation-button name="Program" routerLink="program"></app-navigation-button>
-    <app-navigation-button name="Kapcsolat" routerLink="contactus"></app-navigation-button>
+    <div class="navb" *ngFor="let link of buttons">
+        <app-navigation-button name="{{link[0]}}" routerLink="{{link[1]}}"></app-navigation-button>
+    </div>
 </div>
