@@ -1,4 +1,3 @@
-<a class="btn" 
-    [ngClass]="{'btn-active': isActive()}" 
-    routerLink="/{{routerLink}}" 
-    (click)='setActive()'>{{name}}</a>
+<a class="{{type}} {{isActive()}}"
+   routerLink="/{{routerLink}}" 
+   (click)='setActive()'>{{name}}</a>

@@ -1,5 +1,12 @@
-<div class="navbar">
-    <div class="navb" *ngFor="let link of buttons">
-        <app-navigation-button name="{{link[0]}}" routerLink="{{link[1]}}"></app-navigation-button>
+<div class="navbar" *ngIf="ds.isDesktop()">
+    <div *ngFor="let link of buttons">
+        <app-navigation-button name="{{link[1]}}" routerLink="{{link[0]}}"></app-navigation-button>
+    </div>
+</div>
+
+<div class="navdropdown" *ngIf="!ds.isDesktop()">
+    <a class="btn">{{activename}}</a>
+    <div class="dropdown-content">
+        <app-navigation-button *ngFor="let link of buttons" type="dropdown" name="{{link[1]}}" routerLink="{{link[0]}}"></app-navigation-button>
     </div>
 </div>

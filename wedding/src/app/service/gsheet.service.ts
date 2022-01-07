@@ -69,7 +69,8 @@ export class GsheetService {
       data.values.forEach((element:any) =>{
         var p = new Previously();
         p.imgUrl = element[0];
-        for (let i = 1; i < element.length; i++) {
+        p.caption = element[1];
+        for (let i = 2; i < element.length; i++) {
           p.paragraphs.push(element[i]);
         }
         p.index = ++i;

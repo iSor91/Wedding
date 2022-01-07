@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-navigation',
@@ -9,21 +10,36 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
 
   active: string = "";
+  activename: string = "";
 
   buttons = [
-    ["Program","program"],
-    ["Bemutatkozás", "previously"],
-    ["Kapcsolat","contactus"]
+    ["program","Program"],
+    ["previously","Bemutatkozás"],
+    ["contactus","Kapcsolat"]
   ]
 
-  constructor(private router: Router) {
+  buttonsMap = new Map([
+    ["program","Program"],
+    ["previously","Bemutatkozás"],
+    ["contactus","Kapcsolat"]
+  ])
+
+  constructor(private route: Router, public ds: DeviceDetectorService) {
+    route.events.subscribe(data => {
+      if(data instanceof NavigationEnd) {
+        this.active = data.url.substring(1);
+        var activename = this.buttonsMap.get(this.active);
+        this.activename = activename == undefined ? "" : activename;
+      }
+    });
   }
 
   ngOnInit(): void {
   }
 
-  setActive(active: string) {
+  setActive(active: string, name: string) {
     this.active = active;
+    this.activename = name;
   }
 
   isActive(active: string): boolean {

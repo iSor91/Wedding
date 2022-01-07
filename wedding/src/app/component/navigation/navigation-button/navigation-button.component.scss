@@ -1,5 +1,4 @@
 @import "/src/variables.scss";
-
 .btn {
     text-decoration: none;
     text-transform: uppercase;
@@ -32,4 +31,17 @@
     &-active {
         box-shadow: 0px 5px 10px -2px white;
     }
+}
+
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    font-family: $font-family;
+    text-decoration: none;
+    color: wheat;
+    font-size: 2rem;
+    padding: 0.5rem;
+    @include textbackground(white, $silver);
+
 }

@@ -10,6 +10,7 @@ export class NavigationButtonComponent implements OnInit {
 
   @Input() name: string = "";
   @Input() routerLink: string = "";
+  @Input() type: string = "btn";
 
   constructor(private nav: NavigationComponent) { }
 
@@ -17,11 +18,11 @@ export class NavigationButtonComponent implements OnInit {
   }
 
   setActive() {
-    this.nav.setActive(this.routerLink);    
+    this.nav.setActive(this.routerLink, this.name);
   }
 
-  isActive() {
-    return this.nav.isActive(this.routerLink);
+  isActive(): string {
+    return this.nav.isActive(this.routerLink) ? `${this.type}-active` : "";
   }
 
 }
