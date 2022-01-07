@@ -8,3 +8,4 @@ RUN npm run build --prod
 
 FROM nginx:stable
 COPY --from=npm-build /app/docs/ /usr/share/nginx/html
+COPY --from=npm-build /app/docs//index.html /usr/share/nginx/html/404.html
