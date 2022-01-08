@@ -26,6 +26,7 @@ export class InviteComponent implements OnInit {
   inviteContent: InviteContent | undefined;
   respondedContent: InviteContent | undefined;
   calendarContent: InviteContent | undefined;
+  giftContent: InviteContent | undefined;
   
   constructor(private activeRoute: ActivatedRoute, private gsheetService: GsheetService) { 
     this.hash = activeRoute.snapshot.paramMap.get("hash")!!;
@@ -74,6 +75,7 @@ export class InviteComponent implements OnInit {
     this.inviteContent = this.getInviteContentOfType('invite');
     this.respondedContent = this.getInviteContentOfType('responded');
     this.calendarContent = this.getInviteContentOfType('calendar');
+    this.giftContent = this.getInviteContentOfType('gift');
   }
 
   private getInviteContentOfType(type: string): InviteContent | undefined {

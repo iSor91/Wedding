@@ -2,7 +2,7 @@
     <h1>{{inviteContent?.greeting}} {{invitee?.name}}!</h1>
     
     <div class="container" style="order: 1;">
-        <p *ngFor="let c of inviteContent?.content">{{c}}</p>
+        <p *ngFor="let c of inviteContent?.content" class="nomargin">{{c}}</p>
     </div>
 
     <div *ngIf="alreadyResponded()" class="container" style="order: 2;">
@@ -10,7 +10,9 @@
     </div>
     <a *ngIf="!alreadyResponded() && validType()" class="btn" style="order: 3;" routerLink="/response/{{hash}}">{{respondedContent?.greeting}}</a> 
     
-    <div *ngIf="validType()" class="container" style="order: 4;">
+    <p *ngFor="let p of giftContent?.content" class="nomargin" style="order:4">{{p}}</p>
+    
+    <div *ngIf="validType()" class="container" style="order: 5;">
         <p *ngFor="let p of calendarContent?.content" class="nomargin">{{p}}</p>
         <br/>
         <div title="Naptárba vele!"  class="addeventatc" data-dropdown-x="right" data-dropdown-y="up">

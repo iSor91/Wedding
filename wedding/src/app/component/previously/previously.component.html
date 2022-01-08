@@ -2,13 +2,13 @@
     <h1>Az eddigi részek tartalmából</h1>
     
     <div class="{{orientation()}}" *ngFor="let prevContent of previouslyContent">
-        <div class="container prev" [style.order]="imgOrder(prevContent)">
+        <div class="container prev" *ngIf="prevContent.imgUrl != ''" [style.order]="imgOrder(prevContent)">
             <img class="prev-img" src="https://drive.google.com/uc?export=view&id={{prevContent.imgUrl}}"/>
         </div>
-        <div class="vertical" style="order: 2;"></div>
+        <div class="vertical" style="order: 2;" *ngIf="prevContent.imgUrl != ''"></div>
         <div class="container prev" [style.order]="pOrder(prevContent)">
-            <h2>{{prevContent.caption}}</h2>
-            <p *ngFor="let p of prevContent.paragraphs">
+            <h2 *ngIf="prevContent.caption != ''">{{prevContent.caption}}</h2>
+            <p *ngFor="let p of prevContent.paragraphs" [style.margin-bottom]="prevContent.imgUrl == '' ? 0 : 1">
                 {{p}}
             </p>
         </div>
