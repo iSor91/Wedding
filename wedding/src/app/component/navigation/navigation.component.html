@@ -5,7 +5,11 @@
 </div>
 
 <div class="navdropdown" *ngIf="!ds.isDesktop()">
-    <a class="btn">{{activename}}</a>
+    <a class="btn">{{activename}}
+        <svg height="20" width="10">
+            <polygon points="0 5,10 5,5 15" class="arrow" />
+        </svg>
+    </a>
     <div class="dropdown-content">
         <app-navigation-button *ngFor="let link of buttons" type="dropdown" name="{{link[1]}}" routerLink="{{link[0]}}"></app-navigation-button>
     </div>

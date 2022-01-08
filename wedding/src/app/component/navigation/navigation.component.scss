@@ -10,6 +10,12 @@
     position: relative;
 }
 
+.arrow {
+    fill: lighten($silver,30);
+    stroke:  $silver;
+    stroke-width: 1px;
+}
+
 .navdropdown {
     display: flex;
     flex-direction: column;
