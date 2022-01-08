@@ -19,24 +19,10 @@ $radius: 0.5rem;
     -webkit-text-fill-color: transparent;
 }
 
-@font-face {
-    font-family: brookesmith;
-    src: url("/assets/fonts/Brooke Smith Script.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: dearlyloved;
-    src: url("/assets/fonts/Dearly loved Slab One by 7NTypes.otf") format("opentype");
-}
-
-@font-face {
-    font-family: elsie;
-    src: url("/assets/fonts/Elsie-Regular.ttf") format("truetype");
-}
 
 @font-face {
     font-family: lobster;
-    src: url("/assets/fonts/Lobster-Regular.ttf") format("truetype");
+    src: url("assets/fonts/Lobster-Regular.ttf") format("truetype");
 }
 
 $font-family: lobster;
