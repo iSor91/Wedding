@@ -55,7 +55,9 @@ export class GsheetService {
         inv.contentType = element[1];
         inv.greeting = element[2];
         for (let i = 3; i < element.length; i++) {
-          inv.content.push(element[i]);
+          if(element[i] != '') {
+            inv.content.push(element[i]);
+          }
         }
         inviteContents.push(inv);
       });

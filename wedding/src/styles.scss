@@ -11,6 +11,7 @@ html {
         background: $background-radient;
         margin: 0;
     }
+    font-size: 1.5rem;
 }
 
 ::-webkit-scrollbar {
@@ -27,12 +28,14 @@ html {
     }
 }
 
-h1 {
+h1, h2 {
     font-family: $font-family;
 }
 
 p {
     font-family: $font-family;
+    text-align: center;
+    font-weight: bold;
 }
 
 .container {

@@ -25,4 +25,9 @@ $radius: 0.5rem;
     src: url("assets/fonts/Lobster-Regular.ttf") format("truetype");
 }
 
-$font-family: lobster;
+@font-face {
+    font-family: moondance;
+    src: url("assets/fonts/MoonDance-Regular.ttf") format("truetype");
+}
+
+$font-family: moondance;
