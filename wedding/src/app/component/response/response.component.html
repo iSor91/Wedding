@@ -1,7 +1,7 @@
 <div class="container content">
     <iframe *ngIf="(invitee?.type == 'couple' || invitee?.type == 'single') && !alreadyResponded()"
     [src]="formUrl() | safe"
-    width="640" height="{{getHeight()}}" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    width="{{getWidth()}}" height="{{getHeight()}}" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     <div *ngIf="alreadyResponded()" class="container">
         <p *ngFor="let p of respondedContent?.content" class="nomargin">{{p}}</p>
     </div>

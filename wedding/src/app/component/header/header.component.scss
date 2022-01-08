@@ -5,6 +5,9 @@
     justify-content: center;
     background-color: $heading-background;
     border-radius: $radius;
+    margin: 0;
+    padding: 0;
+    max-width: 90vw;
 
     .header {
         max-width: 1000px;

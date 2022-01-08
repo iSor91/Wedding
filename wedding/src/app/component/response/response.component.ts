@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { InviteContent } from 'src/app/model/invite-content';
-import { Invitee } from 'src/app/model/invitee';
 import { GsheetService } from 'src/app/service/gsheet.service';
 import { InviteComponent } from '../invite/invite.component';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-response',
@@ -13,6 +10,10 @@ import { InviteComponent } from '../invite/invite.component';
   styleUrls: ['./response.component.scss']
 })
 export class ResponseComponent extends InviteComponent implements OnInit {
+
+  constructor(activeRoute: ActivatedRoute, gsheetService: GsheetService, private ds: DeviceDetectorService) {
+    super(activeRoute, gsheetService);
+  }
 
   formUrl(): string {
     return this.invitee?.type == 'single' ? 
@@ -23,6 +24,11 @@ export class ResponseComponent extends InviteComponent implements OnInit {
   }
 
   getHeight(): string {
-    return this.invitee?.type == 'single' ? '1000' : '1250';
+    return this.invitee?.type == 'single' ? '1050' : '1300';
+  }
+
+  getWidth(): string {
+    console.log(this.ds.isDesktop());
+    return this.ds.isDesktop() ? '640' : '400';
   }
 }

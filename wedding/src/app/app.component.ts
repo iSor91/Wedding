@@ -9,10 +9,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class AppComponent {
 
-  deviceService: DeviceDetectorService;
-
-  constructor(private ds: DeviceDetectorService) {
-    this.deviceService = ds;
-  }
+  constructor(public ds: DeviceDetectorService){}
 
 }

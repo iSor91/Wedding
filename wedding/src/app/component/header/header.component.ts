@@ -9,7 +9,14 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  index = 1;
+  
   ngOnInit(): void {
+    this.index = Math.ceil(Math.random() * 2);
+  }
+
+  getIndex(): number {
+    return this.index;
   }
 
 }
