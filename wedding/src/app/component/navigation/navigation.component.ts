@@ -19,6 +19,8 @@ export class NavigationComponent implements OnInit {
   ]
 
   buttonsMap = new Map([
+    ["invitation","Meghívó"],
+    ["response","Visszajelzés"],
     ["program","Program"],
     ["previously","Bemutatkozás"],
     ["contactus","Kapcsolat"]
@@ -28,6 +30,13 @@ export class NavigationComponent implements OnInit {
     route.events.subscribe(data => {
       if(data instanceof NavigationEnd) {
         this.active = data.url.substring(1);
+        if(this.active == "") {
+          this.active = "previously";
+        } else if(this.active.startsWith("invitation")) {
+          this.active = "invitation";
+        } else if(this.active.startsWith("response")) {
+          this.active = "response";
+        }
         var activename = this.buttonsMap.get(this.active);
         this.activename = activename == undefined ? "" : activename;
       }

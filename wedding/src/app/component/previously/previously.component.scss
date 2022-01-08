@@ -8,14 +8,19 @@
 .prev-cont {
     display: flex;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 
     &-v {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
 .prev-img {
     max-width: 100%;
+    max-height: 400px;
     border-radius: 1rem;
     box-shadow: 0px 5px 10px -2px $silver;
 }
@@ -23,4 +28,5 @@
 .vertical {
     border-right: solid black 1px;
     order: 2;
+    align-self: stretch;
 }
