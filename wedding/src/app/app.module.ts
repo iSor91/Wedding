@@ -14,6 +14,7 @@ import { NavigationButtonComponent } from './component/navigation/navigation-but
 import { PreviouslyComponent } from './component/previously/previously.component';
 import { SafePipe } from './service/safe.pipe';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
+import { ProgrowComponent } from './component/program/progrow/progrow.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ContactUsComponent } from './component/contact-us/contact-us.component'
     NavigationButtonComponent,
     PreviouslyComponent,
     SafePipe,
-    ContactUsComponent
+    ContactUsComponent,
+    ProgrowComponent
   ],
   imports: [
     BrowserModule,

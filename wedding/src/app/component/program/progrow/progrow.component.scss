@@ -1,0 +1,118 @@
+@import "/src/variables.scss";
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    .col{
+        box-sizing: border-box;
+        padding: 0 0 1rem 0;
+        p{
+            width: 100%;
+        }
+    }
+
+    :nth-child(1){
+        width: 5rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    :nth-child(3){
+        width: 80%;
+    }
+
+    :nth-child(4){
+        width: 5rem;
+        flex-shrink: 0;
+    }
+        position: relative;
+    .tooltip {
+        
+        display: inline-block;
+
+        .info-img{
+            width: 20%;
+            padding: 0;
+        }
+        .tooltiptext {
+            display: flex;
+            justify-items: center;
+            transform-origin: 0% 100%;
+            text-align: center;
+            background-color: #5a5a5a;
+            color: white;
+            border-radius: 10px;
+            width: 120px;
+            padding: 10px;
+            left: 110px;
+            top: -75px;
+            transform: scale(0);
+            animation-fill-mode: forwards;
+            p{
+                font-weight: normal;
+            }
+            
+            ::before {
+                content: "";
+                display: block;
+                width: 0;
+                position: absolute;
+                bottom: -25px;
+                left: 5px;
+                border-style: solid;
+                border-width: 15px;
+                border-color: #5a5a5a transparent transparent #5a5a5a;
+                transform: rotate(10deg);
+              }
+        }
+
+        &:hover .tooltiptext {
+            animation: expand-bounce 0.25s;
+            transform: scale(1);
+        }
+
+        &:hover::after .tooltiptext {
+            animation: shrink 1s;
+        }
+    }
+}
+
+.vertical {
+    border-right: solid black 1px;
+    align-self: stretch;
+}
+
+@keyframes fade_in {
+    0%{
+        opacity: 0;
+        transform: scale3d(.2,.2,1)
+    }
+
+    100%{
+        opacity: 1;        
+    }
+}
+
+@keyframes expand-bounce {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes shrink {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  

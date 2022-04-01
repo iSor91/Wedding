@@ -1,0 +1,17 @@
+
+.program-table {
+    width: 80%;
+    //border: solid black 1px;
+    //border-radius: 1rem;
+
+    .prog {
+        display: flex;
+        margin: 0;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+app-progrow {
+    width: 100%;
+}

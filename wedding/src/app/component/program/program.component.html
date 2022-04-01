@@ -1,4 +1,8 @@
 <div class="container content">
     <h1>Programok</h1>
-    <p>Amint lesz program, ide fogjuk feltölteni.</p>
+    <div class="program-table">
+        <div class="prog" *ngFor="let p of programs">
+            <app-progrow [program]="p"></app-progrow>
+        </div>
+    </div>
 </div>    
