@@ -9,25 +9,28 @@
     
     .col{
         box-sizing: border-box;
-        padding: 0 0 1rem 0;
+        padding: 0;
         p{
             width: 100%;
         }
     }
 
     :nth-child(1){
-        width: 5rem;
+        width: 3rem;
         margin-right: 1rem;
         flex-shrink: 0;
     }
 
     :nth-child(3){
-        width: 80%;
-        
+        width: 90%;
+        flex-wrap: nowrap;
+        p {
+            font-weight: normal;
+        }
     }
 
     :nth-child(4){
-        width: 5rem;
+        width: 3rem;
         flex-shrink: 0;
     }
 
@@ -40,7 +43,7 @@
             z-index: 0;
             position: relative;
             img {
-                width: 30%;
+                width: 50%;
                 position: absolute;
                 left: 1.5rem;
                 top: 0;
@@ -73,7 +76,7 @@
             max-width: 60%;
             min-height: 2rem;
             top: -0.5rem;
-            right: 6rem;
+            right: 3.5rem;
             transform-origin: 105% 0.5rem;
             background: $background-radient;
             border: solid 1px lighten($silver,30);
