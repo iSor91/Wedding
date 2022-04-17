@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col">
+        <p>{{program?.time}}</p>
+    </div>
+    <div class="vertical"></div>
+    <div class="col">
+        <p>{{program?.name}}</p>
+    </div>
+    <div class="col tooltip">
+        <div *ngIf="program?.description!" class="info-img">
+            <img src="assets/images/info_cat_only_i.png"/>
+            <img class="info-img2" src="assets/images/info_cat_awoke.png"/>
+        </div>
+        <div *ngIf="program?.description!" class="tooltiptext">   
+            <p>{{program?.description}}</p>
+        </div>
+    </div>
+</div>
+

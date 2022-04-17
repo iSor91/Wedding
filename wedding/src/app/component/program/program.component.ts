@@ -21,7 +21,10 @@ export class ProgramComponent implements OnInit {
   }
 
   getPrograms() {
-    this.programsObs.subscribe(data => this.programs = data.filter(p=>!p.hidden))
+    this.programsObs.subscribe(data => {
+      this.programs = data.filter(p=>!p.hidden);
+      console.log(data)
+    })
   }
 
 }

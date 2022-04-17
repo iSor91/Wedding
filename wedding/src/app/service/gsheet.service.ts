@@ -13,7 +13,8 @@ export class GsheetService {
 
   baseUrl: string = 'https://sheets.googleapis.com/v4/spreadsheets/'
   spreadsheetId: string = '1SbwPIDL9h5qoEFMZmMS5SSw5RDB1v8fH3HlW9Dl_yfg'
-  //TODO move to server side API
+  
+  //TODO here comes the API key
   key: string = 'AIzaSyBM30ioEyekkcQdr5AveXBLcgjE1Cyi97s'
 
   invitees: BehaviorSubject<Invitee[]> = new BehaviorSubject<Invitee[]>([]);
