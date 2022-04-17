@@ -15,7 +15,7 @@ export class GsheetService {
   spreadsheetId: string = '1SbwPIDL9h5qoEFMZmMS5SSw5RDB1v8fH3HlW9Dl_yfg'
   
   //TODO here comes the API key
-  key: string = ''
+  key: string = 'AIzaSyBPSyFGr-N79-V5EMkWPpmw6EPzQ8D0oN8'
 
   invitees: BehaviorSubject<Invitee[]> = new BehaviorSubject<Invitee[]>([]);
   program: BehaviorSubject<Program[]> = new BehaviorSubject<Program[]>([]);
