@@ -69,14 +69,15 @@
             justify-content: flex-start;
             align-items: center;
             padding: 0;
+            min-width: 60%;
             max-width: 60%;
             min-height: 2rem;
             top: -0.5rem;
             right: 6rem;
             transform-origin: 105% 0.5rem;
-            background: $silver;
+            background: $background-radient;
             border: solid 1px lighten($silver,30);
-            color: white;
+            color: lighten($silver,40);
             border-radius: 10px;
             transform: scale(0);
             animation-fill-mode: forwards;
@@ -96,7 +97,7 @@
                 right: -1.1rem;
                 border-radius: 1rem;
                 padding: 0.1rem;
-                background-color: $silver;
+                background: $background-radient;
                 border: solid 1px lighten($silver,30);
             }
 
@@ -109,7 +110,7 @@
                 right: -0.625rem;
                 border-radius: 1rem;
                 padding: 0.2rem;
-                background-color: $silver;
+                background: $background-radient;
                 border: solid 1px lighten($silver,30);
             }
          }
