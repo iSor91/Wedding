@@ -8,6 +8,11 @@ def init_image():
     #the image size should be set as a default, since all cards shall be the same size
     return Image.new('RGB', (c.image_w, c.image_h), color = (0,31,115))
 
+text_area_w = c.image_w - c.head_d * 2 - c.padding * 2
+text_area_h = c.image_h - c.padding * 2
+text_area_start_w = c.padding + c.head_d
+text_area_start_h = c.padding
+
 img = init_image()
 d = ImageDraw.Draw(img)
 
@@ -18,52 +23,53 @@ bgd.img_w(c.image_w).img_h(c.image_h).head_d(c.head_d).padding(c.padding)
 
 bgd.print_background()
 
-
-#set size for the whole image text as a variable, calculated from the text
-size = 100 
-fnt = ImageFont.truetype('assets/Minnie.TTF', size)
-
-text = 'Bendegúz. De amit az Isti rair nekem. Irodalom fuzetre egyszer azt irta hogy Bendicica'
-
-text_area_w = c.image_w - c.head_d * 2 - c.padding * 2
-text_area_h = c.image_h - c.padding * 2
-text_area_start_w = c.padding + c.head_d
-text_area_start_h = c.padding
-
+text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
 words = text.split()
-current = ''
-newText = ''
-texts = []
-for w in words:
-    if(len(current) > 0):
-        newText = ' '.join([current, w])
-    else:
-        newText = w
-    if(d.textlength(newText, font=fnt) > text_area_w):
-        texts.append(current)
-        newText = ''
-        current = w
-    else:
-        current = newText
+#set size for the whole image text as a variable, calculated from the text
+size = 110
+fnt = ImageFont.truetype('assets/Minnie.TTF', size)
+fits = False
+while( not fits ):
+    
 
-texts.append(current)
+    current = ''
+    newText = ''
+    texts = []
+    for w in words:
+        if(len(current) > 0):
+            newText = ' '.join([current, w])
+        else:
+            newText = w
+        if(d.textlength(newText + ' ', font=fnt) > text_area_w):
+            texts.append(current)
+            newText = ''
+            current = w
+        else:
+            current = newText
+
+    texts.append(current)
+
+    text_height = len(texts) * size * c.row_offset
+    print('size: {0}, text_area: {1}, text_size: {2}'.format(size,text_area_h, text_height))
+
+    if(text_height <= text_area_h):
+        fits = True
+    else :
+        size = size - 10
+        fnt = ImageFont.truetype('assets/Minnie.TTF', size)
 
 row = 0
 text_cnt = len(texts)
-h_offset = (text_area_h - text_cnt * size) / 2 - size
-
-
-pd.rectangle(text_area_start_w, text_area_start_h, text_area_w, text_area_h, 'red')
-pd.rectangle(text_area_start_w, text_area_start_h, text_area_w/2, text_area_h/2, 'green')
+h_offset = (text_area_h - text_cnt * size * c.row_offset) / 2 - size
 
 for t in texts:
     row += 1
-    w_offset = (text_area_w - d.textlength(t, font=fnt)) / 2
+    w_offset = (text_area_w - d.textlength(t + ' ', font=fnt)) / 2
     x = text_area_start_w + w_offset
-    y = h_offset + text_area_start_h + row * size
-    for c in t:
-        pd.print_char(c, (x,y), fnt)
-        last_char_length = d.textlength(c, font=fnt)
+    y = h_offset + text_area_start_h + row * size * c.row_offset
+    for char in t:
+        pd.print_char(char, (x,y), fnt, size)
+        last_char_length = d.textlength(c.character_counterparts.get(char,char), font=fnt)
         x += last_char_length
 
 img.save('out/test.png')
