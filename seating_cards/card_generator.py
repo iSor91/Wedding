@@ -15,7 +15,7 @@ class CardGenerator:
         img = self.init_image()
         d = ImageDraw.Draw(img)
 
-        bgd = BackgroundDrawer(d)
+        bgd = BackgroundDrawer(d, img)
         pd = PilDrawer(d)
 
         bgd.img_w(c.image_w).img_h(c.image_h).head_d(c.head_d).padding(c.padding)
