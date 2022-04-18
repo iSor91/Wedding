@@ -12,7 +12,7 @@ class PilDrawer:
 
     def rectangle(self,x,y,w,h, fill):
         self.d.rectangle([(x,y),(x+w,y+h)], fill)
-d
+
     #text
     def print_char(self,char, start, fnt):
         self.d.text((start[0]+2,start[1]+2), char, font = fnt, fill = (0,0,0))
