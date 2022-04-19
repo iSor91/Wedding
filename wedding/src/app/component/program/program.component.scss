@@ -1,6 +1,6 @@
 
 .program-table {
-    width: 80%;
+    width: 95%;
     //border: solid black 1px;
     //border-radius: 1rem;
 
@@ -17,5 +17,12 @@ app-progrow {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
+}
+
+app-map {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     flex-direction: row;
 }

@@ -15,6 +15,7 @@ import { PreviouslyComponent } from './component/previously/previously.component
 import { SafePipe } from './service/safe.pipe';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { ProgrowComponent } from './component/program/progrow/progrow.component';
+import { MapComponent } from './component/map/map.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProgrowComponent } from './component/program/progrow/progrow.component'
     PreviouslyComponent,
     SafePipe,
     ContactUsComponent,
-    ProgrowComponent
+    ProgrowComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
