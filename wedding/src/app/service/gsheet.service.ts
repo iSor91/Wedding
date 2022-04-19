@@ -5,6 +5,9 @@ import { Invitee } from '../model/invitee';
 import { Program } from '../model/program';
 import { InviteContent } from '../model/invite-content';
 import { Previously } from '../model/previously';
+import { TravelInfo } from '../model/travel-info';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +17,14 @@ export class GsheetService {
   baseUrl: string = 'https://sheets.googleapis.com/v4/spreadsheets/'
   spreadsheetId: string = '1SbwPIDL9h5qoEFMZmMS5SSw5RDB1v8fH3HlW9Dl_yfg'
   
-  //TODO here comes the API key
-  key: string = 'AIzaSyBpd_v4aLU3fL48HI7GF-D6-WhB6xC6hyg'
 
   invitees: BehaviorSubject<Invitee[]> = new BehaviorSubject<Invitee[]>([]);
   program: BehaviorSubject<Program[]> = new BehaviorSubject<Program[]>([]);
   inviteContent: BehaviorSubject<InviteContent[]> = new BehaviorSubject<InviteContent[]>([]);
   respondedHashes: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   previouslyContent: BehaviorSubject<Previously[]> = new BehaviorSubject<Previously[]>([]);
+
+  travelInfos: BehaviorSubject<TravelInfo[]> = new BehaviorSubject<TravelInfo[]>([]);
 
   constructor(private http: HttpClient) { 
     var programJson = this.readSheet('Program');
@@ -64,6 +67,22 @@ export class GsheetService {
       });
       this.inviteContent.next(inviteContents);
     });
+
+    var travelInfosJson = this.readSheet('Travel');
+    travelInfosJson.subscribe( data => {
+      var travelInfos: TravelInfo[] = [];
+      data.values.forEach((element: any) => {
+        var travelInfo = new TravelInfo();
+        travelInfo.order = element[0];
+        for(let i = 1; i<element.length;i++) {
+          if(element[i] != '') {
+            travelInfo.paragraphs.push(element[i]);
+          }
+        }
+        travelInfos.push(travelInfo);
+      });
+      this.travelInfos.next(travelInfos);
+    })
 
     var previouslyJson = this.readSheet('Previously');
     var i = 0;
@@ -115,8 +134,12 @@ export class GsheetService {
     return this.previouslyContent.asObservable();
   }
 
+  getTravelInformation() {
+    return this.travelInfos.asObservable();
+  }
+
   readSheet(sheet: string) {
-    return this.http.get<any>(`${this.baseUrl}${this.spreadsheetId}/values/${sheet}!A2:Z1000?key=${this.key}`)
+    return this.http.get<any>(`${this.baseUrl}${this.spreadsheetId}/values/${sheet}!A2:Z1000?key=${environment.key}`)
   }
 
 }

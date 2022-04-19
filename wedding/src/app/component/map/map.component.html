@@ -1,7 +1,14 @@
 
 <div class="map-container">
 
-    <h1>Helyszín és lejutás</h1>
+
+    <div class="description">
+        <h1>Helyszín és utazás</h1>
+        <div class="section" *ngFor="let section of sections">
+            <p class="paragraph" *ngFor="let paragraph of section.paragraphs">{{paragraph}}</p>
+        </div>
+    </div>
+
     <div class="map">
 
         <iframe
@@ -11,8 +18,7 @@
         loading="lazy"
         allowfullscreen
         referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBiPj0d-3Gf31MD-13AXS3yYKEZRJtYkoI
-        &q=Nádas Tó Park Hotel,Hungary">
+        [src]="getMapUrl() | safe" >
         </iframe>
     </div>
 
