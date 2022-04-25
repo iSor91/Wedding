@@ -1,0 +1,5 @@
+dev
+out
+__pycache__/*
+test.py
+input
