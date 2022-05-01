@@ -31,7 +31,7 @@ export class NavigationComponent implements OnInit {
       if(data instanceof NavigationEnd) {
         this.active = data.url.substring(1);
         if(this.active == "") {
-          this.active = "previously";
+          this.active = "program";
         } else if(this.active.startsWith("invitation")) {
           this.active = "invitation";
         } else if(this.active.startsWith("response")) {

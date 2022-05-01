@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'response/:hash', component: ResponseComponent},
   {path: 'invitation/:hash', component: InviteComponent},
   {path: 'program', component: ProgramComponent},
-  {path: '', redirectTo:'previously', pathMatch:'full'},
+  {path: '', redirectTo:'program', pathMatch:'full'},
   {path: '**', redirectTo: 'previously'}
 ];
 
