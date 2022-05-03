@@ -9,7 +9,7 @@ class TextCalculator:
         pass
 
     def calculate_text(self, text, d):
-        words = text.split()
+        words = text.split(' ')
 
         #calculate text size and font, also creating rows for the text
         self.size = self.base_size
@@ -20,22 +20,32 @@ class TextCalculator:
             current = ''
             newText = ''
             self.rows = []
+            create_newline = False
+            print(words)
             for w in words:
                 unaccented_word = u.unaccent_word(w)
                 if(d.textlength(unaccented_word, font=self.fnt) > c.text_area_w):
                     too_long_word = True
                     # print('too long word')
                     break
-                if(len(current) > 0):
+                
+                if(w == 'nl'):
+                    create_newline = True   
+
+                if(len(current) > 0 and not create_newline):
                     newText = ' '.join([current, w])
-                else:
+                elif(not create_newline):
                     newText = w
                 
-                if(d.textlength(newText, font=self.fnt) > c.text_area_w):
+                if(d.textlength(newText, font=self.fnt) > c.text_area_w or create_newline):
                     if(len(current) > 0):
                         self.rows.append(current)
                     newText = ''
                     current = w
+                    if(create_newline):
+                        print(w)
+                        current = ''
+                        create_newline = False
                 else:
                     current = newText
             self.rows.append(current)

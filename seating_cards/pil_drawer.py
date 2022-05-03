@@ -2,8 +2,6 @@ from email.policy import default
 import constants as c
 import math
 
-shadow_offset = 4
-
 class PilDrawer:
 
     def __init__(self,d):
@@ -19,7 +17,7 @@ class PilDrawer:
     #text
     def print_char(self,char, start, fnt, size):
         char_to_print = c.character_counterparts.get(char, char)
-        self.d.text((start[0]+shadow_offset,start[1]+shadow_offset), char_to_print, font = fnt, fill = (0,0,0))
+        self.d.text((start[0]+c.shadow_offset,start[1]+c.shadow_offset), char_to_print, font = fnt, fill = (0,0,0))
         self.d.text(start, char_to_print, font = fnt, fill = (255,255,255))
 
         if(char in c.long_tittle_chars):
@@ -49,5 +47,5 @@ class PilDrawer:
         start_diff = math.ceil((char_length - tittle_length) / 2 )
         x = start[0] + start_diff + x_diff
         y = start[1] - size + y_diff 
-        self.d.text((x+shadow_offset,y+shadow_offset), accent, font = fnt, fill = (0,0,0))
+        self.d.text((x+c.shadow_offset,y+c.shadow_offset), accent, font = fnt, fill = (0,0,0))
         self.d.text((x, y), accent, font = fnt, fill = (255,255,255))
