@@ -21,7 +21,7 @@ class TextCalculator:
             newText = ''
             self.rows = []
             create_newline = False
-            print(words)
+            # print(words)
             for w in words:
                 unaccented_word = u.unaccent_word(w)
                 if(d.textlength(unaccented_word, font=self.fnt) > c.text_area_w):
@@ -38,12 +38,12 @@ class TextCalculator:
                     newText = w
                 
                 if(d.textlength(newText, font=self.fnt) > c.text_area_w or create_newline):
-                    if(len(current) > 0):
-                        self.rows.append(current)
+                    # if(len(current) > 0):
+                    self.rows.append(current)
                     newText = ''
                     current = w
                     if(create_newline):
-                        print(w)
+                        # print(w)
                         current = ''
                         create_newline = False
                 else:

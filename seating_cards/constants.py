@@ -1,9 +1,19 @@
 #main image constants
-image_w = 4000 #full image width
-image_h = 4000 #full image height
+#seating_card
+image_w = 2000 #full image width
+image_h = 1000 #full image height
 head_d  = 0  #head circle diameter
-padding = 400   #padding on the image
+padding = 100   #padding on the image
 outline = 8 #outline for the ellipses
+row_offset = 1.2
+
+#thanking_gift
+# image_w = 4000 #full image width
+# image_h = 4000 #full image height
+# head_d  = 0  #head circle diameter
+# padding = 400   #padding on the image
+# outline = 8 #outline for the ellipses
+# row_offset = 1
 
 head_border_percent = 0.02
 
@@ -17,7 +27,6 @@ two_offset = (image_w - 2*bg_padding_w) / 20
 two_padding = (image_w - 2*bg_padding_w) / 10
 
 #text row size multiplier
-row_offset = 1
 shadow_offset = 20 #offset for the text shadow
 
 heads = [{'dog': 'isor_dog', 'up': 'julo_up'}, {'dog': 'julo_dog', 'up': 'isor_up'}]
