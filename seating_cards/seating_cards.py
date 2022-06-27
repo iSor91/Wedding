@@ -6,7 +6,7 @@ from datetime import datetime
 from mirror import mirror_and_merge_image
 
 
-dir_path = 'out'
+dir_path = 'out_extend'
 
 try:
     shutil.rmtree(dir_path)
@@ -17,13 +17,15 @@ os.mkdir(dir_path)
 
 cg = CardGenerator()
 
-gs = GoogleSheetService()
+# gs = GoogleSheetService()
+names = [{"Bartók Gábor", "Steve Landhouse"}]
 
 start_time = datetime.now()
 print('Started seating card generation at {}'.format(start_time) )
 all = 1
 cnt = 0
-for r in gs.all_response_names:
+# for r in gs.all_response_names:
+for r in names:
     subcnt = 0
     for name in r:
         print('{} - generating seating card for {}'.format(all, name))
