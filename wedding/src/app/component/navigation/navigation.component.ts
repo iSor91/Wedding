@@ -15,6 +15,7 @@ export class NavigationComponent implements OnInit {
   buttons = [
     ["program","Program"],
     ["previously","Bemutatkozás"],
+    ["images", "Képek"],
     ["contactus","Kapcsolat"]
   ]
 
@@ -23,6 +24,7 @@ export class NavigationComponent implements OnInit {
     ["response","Visszajelzés"],
     ["program","Program"],
     ["previously","Bemutatkozás"],
+    ["images","Képek"],
     ["contactus","Kapcsolat"]
   ])
 

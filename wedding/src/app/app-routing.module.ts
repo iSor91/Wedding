@@ -5,6 +5,7 @@ import { InviteComponent } from './component/invite/invite.component';
 import { PreviouslyComponent } from './component/previously/previously.component';
 import { ProgramComponent } from './component/program/program.component';
 import { ResponseComponent } from './component/response/response.component';
+import { ImagesComponent } from './images/images.component';
 
 const routes: Routes = [
   {path: 'contactus', component: ContactUsComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'response/:hash', component: ResponseComponent},
   {path: 'invitation/:hash', component: InviteComponent},
   {path: 'program', component: ProgramComponent},
+  {path: 'images', component: ImagesComponent},
   {path: '', redirectTo:'program', pathMatch:'full'},
   {path: '**', redirectTo: 'previously'}
 ];

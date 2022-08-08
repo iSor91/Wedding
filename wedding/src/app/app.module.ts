@@ -16,6 +16,7 @@ import { SafePipe } from './service/safe.pipe';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { ProgrowComponent } from './component/program/progrow/progrow.component';
 import { MapComponent } from './component/map/map.component';
+import { ImagesComponent } from './images/images.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MapComponent } from './component/map/map.component';
     SafePipe,
     ContactUsComponent,
     ProgrowComponent,
-    MapComponent
+    MapComponent,
+    ImagesComponent
   ],
   imports: [
     BrowserModule,
